@@ -103,107 +103,147 @@ using namespace std;
 //  *********************************************************************** 
 
 
-float findmax(float[], int);
-float findmin(float[], int);
-float average(float[], int);
-float median(float[], int);
-float standard_dev(float[], int);
-void read(float[], int, int&);
-
-
-void main()
-{
-	int N;
-	cout << "Enter the vencor length:";
-	cin >> N;
-
-	float a[1000];
-	int k = 0;
-	read(a, N, k);
-
-	cout << endl;
-	cout << "******************";
-	cout << endl;
-
-	cout << "max(a): " << findmax(a, k) << endl;
-	cout << "min(a): " << findmin(a, k) << endl;
-	cout << "average(a): " << average(a, k) << endl;
-	cout << "median(a): " << median(a, k) << endl;
-	cout << "std(a): " << standard_dev(a, k);
-
-	_getch();
-}
-
-
-float findmax(float b[], int k)
-{
-	float max = b[0];
-	for (int i = 0; i <= k; i++)
-		if (b[i] > max)
-			max = b[i];
-	return max;
-}
-
-float findmin(float b[], int k)
-{
-	float min = b[0];
-	for (int i = 0; i <= k; i++)
-		if (b[i] < min)
-			min = b[i];
-	return min;
-}
-
-
-float average(float b[], int k)
-{
-	float sum = 0;
-	for (int i = 0; i <= k; i++)
-		sum += b[i];
-	return sum / (k + 1);
-}
-
-
-float median(float b[], int k)
-{
-	for (int j = 1; j < k + 1; j++)
-	{
-		for (int i = 0; i < k + 1 - j; i++)
-		{
-			int b1 = b[i];             // before element
-			int a1 = b[i + 1];         // agter element
-			if (b1 > a1)
-			{
-				b[i] = a1;
-				b[i + 1] = b1;
-			}
-		}
-	}
-	if ((k + 1) % 2 != 0)
-		return b[k / 2];
-	else
-		return (b[(k + 1) / 2 - 1] + b[(k + 1) / 2]) / 2;
-}
-
-
-
-float standard_dev(float b[], int k)
-{
-	float standard_dev = 0;
-	for (int i = 0; i <= k; i++)
-		standard_dev += pow((b[i] - average(b, k)), 2);
-	return sqrt(standard_dev / k);
-}
-
-
-void read(float a[], int N, int& k)
-{
-	do {
-		cout << "a[" << k << "]:";
-		cin >> a[k];
-		k++;
-	} while (k < N);
-	--k;
-}
+//float findmax(float[], int);
+//float findmin(float[], int);
+//float average(float[], int);
+//float median(float[], int);
+//float mode(float[], int);
+//float standard_dev(float[], int);
+//void read(float[], int, int&);
+//
+//
+//void main()
+//{
+//	int N;
+//	cout << "Enter the vencor length:";
+//	cin >> N;
+//
+//	float a[1000];
+//	int k = 0;
+//	read(a, N, k);
+//
+//	cout << endl;
+//	cout << "******************";
+//	cout << endl;
+//
+//	cout << "max(a): " << findmax(a, k) << endl;
+//	cout << "min(a): " << findmin(a, k) << endl;
+//	cout << "average(a): " << average(a, k) << endl;
+//	cout << "median(a): " << median(a, k) << endl;
+//	cout << "mode(a): " << mode(a, k) << endl;
+//	cout << "std(a): " << standard_dev(a, k);
+//
+//	_getch();
+//}
+//
+//
+//float findmax(float b[], int k)
+//{
+//	float max = b[0];
+//	for (int i = 0; i <= k; i++)
+//		if (b[i] > max)
+//			max = b[i];
+//	return max;
+//}
+//
+//float findmin(float b[], int k)
+//{
+//	float min = b[0];
+//	for (int i = 0; i <= k; i++)
+//		if (b[i] < min)
+//			min = b[i];
+//	return min;
+//}
+//
+//
+//float average(float b[], int k)
+//{
+//	float sum = 0;
+//	for (int i = 0; i <= k; i++)
+//		sum += b[i];
+//	return sum / (k + 1);
+//}
+//
+//
+//float median(float b[], int k)
+//{
+//	for (int j = 1; j <=k; j++)
+//	{
+//		for (int i = 0; i <= k - j; i++)
+//		{
+//			int b1 = b[i];             // before element
+//			int a1 = b[i + 1];         // agter element
+//			if (b1 > a1)
+//			{
+//				b[i] = a1;
+//				b[i + 1] = b1;
+//			}
+//		}
+//	}
+//	if ((k + 1) % 2 != 0)
+//		return b[k / 2];
+//	else
+//		return (b[(k + 1) / 2 - 1] + b[(k + 1) / 2]) / 2;
+//}
+//
+//float mode(float b[], int k)
+//{
+//	float f[10] = { 0 };
+//	int c[10] = { 0 };
+//	int found = 0;
+//	f[0] = b[0];
+//	int count = 0;
+//
+//	for (int i = 0; i <= k; i++)
+//	{	
+//		for (int j = 0; j < 10; j++)
+//		{
+//			if (f[j] != 0 && j!=i)
+//			{
+//				if (f[j] == b[i])
+//					found = 1;
+//				else
+//				{
+//					found = 0;
+//					count ++;
+//					f[count] = b[i];
+//					c[count] = count;
+//				}
+//
+//				if (found == 1)
+//				{
+//					f[j] = b[i];
+//					c[j]++;
+//				}
+//			}
+//		}
+//
+//	}
+//
+//	return b[0];
+//		    
+//	
+//
+//}
+//
+//float standard_dev(float b[], int k)
+//{
+//	float standard_dev = 0;
+//	for (int i = 0; i <= k; i++)
+//		standard_dev += pow((b[i] - average(b, k)), 2);
+//	return sqrt(standard_dev / k);
+//}
+//
+//
+//void read(float a[], int N, int& k)
+//{
+//	do {
+//		cout << "a[" << k << "]:";
+//		cin >> a[k];
+//		k++;
+//	} while (k < N);
+//	--k;
+//}
 
 
 
@@ -337,3 +377,99 @@ void read(float a[], int N, int& k)
 //	return -1;
 //}
 
+
+//  ***********************************************************************
+//  ************************* Invert of 3*3 Matrix ************************
+//  *********************************************************************** 
+
+int det2(int[2][2]);
+int det3(int[3][3]);
+void kahad(int[3][3]);
+void print(int[][3],  int);
+int b[3][3] = { 0 };
+
+void main()
+{
+	int a[3][3] = { {1,2,3} ,{5,5,6}, {7,8,9} };
+
+	int det = det3(a);
+	kahad(a);
+	print(b, det);
+}
+
+
+int det2(int b[2][2])
+{
+	return b[0][0] * b[1][1] - b[0][1] * b[1][0];
+}
+int det3(int b[3][3])
+{
+	int c1[2][2] = { {b[1][1],b[1][2]} ,{b[2][1],b[2][2]}};
+	int c2[2][2] = { {b[1][0],b[1][2]} ,{b[2][0],b[2][2]} };
+	int c3[2][2] = { {b[1][0],b[1][1]} ,{b[2][0],b[2][1]} };
+	return b[0][0] * det2(c1)-b[0][1]* det2(c2)+ b[0][2] * det2(c3);
+}
+
+
+void kahad(int a[3][3])
+{
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+
+			int index_i = i;
+			int index_j = j;
+
+			int K[2][2] = { 0 };
+			int counter = 0;
+			int ind_i = 0;
+			int ind_j = 0;
+			for (int m = 0; m < 3; m++)
+			{
+				for (int n = 0; n < 3; n++)
+				{
+					if (m != index_i && n != index_j)
+					{
+			
+						switch (counter) {
+						case 0:
+							ind_i = 0;
+							ind_j = 0;
+							break;
+						case 1:
+							ind_i = 0;
+							ind_j = 1;
+							break;
+						case 2:
+							ind_i = 1;
+							ind_j = 0;
+							break;
+						case 3:
+							ind_i = 1;
+							ind_j = 1;
+							break;
+						}
+
+						K[ind_i][ind_j] = a[m][n];
+						counter++;
+					}
+				}
+			}
+			int cof = 1;
+			if ((index_i + index_j) % 2 != 0)
+				cof = -1;
+			b[j][i] = cof*det2(K);
+		}
+	}
+}
+
+void print(int b[][3], int det)
+{
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++)
+			cout << "  " << b[i][j]*(1.0/ det);
+		cout << endl << endl;
+	}
+}
